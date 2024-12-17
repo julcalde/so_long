@@ -11,7 +11,7 @@ LIBFT_DIR =		./libft
 LIBMLX =		$(LIBMLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIBFT =			$(LIBFT_DIR)/libft.a
 
-SRCS =		
+SRCS =			0_so_long.c
 
 OBJS =			$(SRCS:.c=.o)
 
