@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:59:38 by julcalde          #+#    #+#             */
-/*   Updated: 2024/12/17 22:30:41 by julcalde         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:07:33 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ mlx_texture_t	*load_texture(mlx_t *mlx, const char *path)
 {
 	mlx_texture_t	*texture;
 
+
 	texture = mlx_load_png(path);
 	if (!texture)
 	{
@@ -35,41 +36,28 @@ mlx_texture_t	*load_texture(mlx_t *mlx, const char *path)
 	return (texture);
 }
 
-void	render_map(mlx_t *mlx, char **map, mlx_texture_t *wall_texture, mlx_texture_t *player_texture);
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (map[y])
-	{
-		while (map[y][x])
-		{
-			if (map[y][x] == '1')
-				mlx_draw_texture(mlx, wall_texture, x * 32, y * 32);
-			else if (map[y][x] == 'P')
-				mlx_draw_texture(mlx, player_texture, x * 32, y * 32);
-			x++;
-		}
-		y++;
-	}
-}
-
 int	main(int argc, char **argv)
 {
-	mlx_t	*mlx;
+	mlx_t			*mlx;
+	char			*path;
+	mlx_texture_t	*wall_texture;
+	mlx_texture_t	*player_texture;
 
-	mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGTH , "2D game", 1);
-	if (!mlx)
-	{
-		ft_printf("ERROR\nFailed to initialize MLX42.\n");
-		return (1);
-	}
-	// mlx_texture_t *wall_texture = load_texture(mlx, <wall texture path>)
-	// mlx_texture_t *player_texture = load_texture(mlx, <player texture path>)
+	if (argc != 2)
+		return (ft_printf("Error\nUse: ./so_long <map_name>.ber\n"), 1);
+	if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == NULL)
+		return (ft_printf("Error\nUse: .ber extention\n"), 1);
+	path = ft_strjoin("./maps/", argv[1]);
+	if (!path)
+		return (ft_printf("Problem creating map from %s\n", path), 1);
+	mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGTH, "2D game", 1);
+	if (mlx == NULL)
+		return (ft_printf("ERROR\nFailed to initialize MLX42.\n"), 1);
 	mlx_loop(mlx);
-	// mlx_delete_texture(wall_texture);
-	// mlx_delete_texture(player_texture);
+	wall_texture = load_texture(mlx, <wall_texture_path>);
+	player_texture = load_texture(mlx, <player_texture_path>);
+	mlx_delete_texture(wall_texture);
+	mlx_delete_texture(player_texture);
 	cleanup(mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 20:50:53 by julcalde          #+#    #+#             */
-/*   Updated: 2024/12/17 22:05:43 by julcalde         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:36:37 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
 # include "libft/include/printf/ft_printf.h"
+# include "libft/include/get_next_line/get_next_line.h"
 
 typedef struct s_game
 {
@@ -36,6 +37,8 @@ typedef struct s_game
 	int		collectibles;
 	int		moves;
 }			t_game;
+
+int	load_map(const char *path);
 
 
 #endif
