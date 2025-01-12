@@ -1,42 +1,42 @@
 NAME =			so_long
 
-CC =			cc
 CFLAGS =		-Wall -Werror -Wextra -I./libft
 
-HEADERS	=		-I $(LIBMLX_DIR)/include -I $(LIBFT_DIR)/include
+HEADER	=		-I $(LIBMLX_DIR)/include -I $(LIBFT_DIR)/include
 
-LIBMLX_DIR =	MLX42/include/MLX42
-LIBMLX =		$(LIBMLX_DIR)/MLX42.a
+LIBMLX_DIR =	MLX42
+LIBMLX =		$(LIBMLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 LIBFT_DIR =		libft
 LIBFT =			$(LIBFT_DIR)/libft.a
 
-SRCS =			0_so_long.c
+SRCS =			main.c
 
 OBJS =			$(SRCS:.c=.o)
 
-.SILENT:
+all:			$(NAME)
 
-all:	$(LIBFT) $(NAME)
+$(NAME): $(OBJS) $(LIBFT) $(LIBMLX) $(HEADER)
+	cc $(CFLAGS) $(OBJS) $(LIBFT) $(LIBMLX) -o $(NAME)
 
 $(LIBFT):
-		make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR)
 
-libmlx: cmake $(LIBMLX_DIR) -B $(LIBMLX_DIR)/build
-		make -C $(LIBMLX_DIR)/build -j4
+$(LIBMLX):
+	make -C $(LIBMLX_DIR)
 
-$(NAME): $(OBJS) | $(LIBFT)
-		$(CC) $(CFLAGS) $(OBJS) $(LIBMLX) $(LIBFT) $(HEADERS) \
-		-framework Cocoa -framework OpenGL -framework IOKit -o $(NAME)
+%o: %c
+	cc $(CFLAGS) -c $< -o $@
 
 clean:
-		rm -f $(OBJS)
-		make -C $(LIBMLX_DIR)/build clean
-		make -C $(LIBFT_DIR) clean
+	rm -f $(OBJS)
+	make -C $(LIBFT_DIR) clean
+	make -C $(LIBMLX_DIR) clean
 
 fclean: clean
-		rm -f $(NAME)
-		make -C $(LIBFT_DIR) fclean
+	rm -f $(NAME)
+	make -C $(LIBFT_DIR) fclean
+	make -C $(LIBMLX_DIR) fclean
 
 re: fclean all
 
