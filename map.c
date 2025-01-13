@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 22:04:13 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/13 17:37:14 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:20:46 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	verify_map_elements(t_game *game)
 		x = 0;
 		while (game->map[y][x])
 		{
-			if (ft_strchr("01PCE", game->map[y][x]) ==NULL)
+			if (ft_strchr("01PCE", game->map[y][x]) == NULL)
 			{
 				free(game);
 				printf("Error\nInvalid elements in map\n");
@@ -62,4 +62,33 @@ void	read_map(char *argv, t_game *game)
 	close(fd);
 	game->map = ft_split(total_map, '\n');
 	game->map_copy = ft_split(total_map, '\n');
+}
+
+void	check_valid_map(char **bermap, t_game *game)
+{
+	int	i;
+	int	j;
+
+	while (bermap[game->row])
+	{
+		while (bermap[game->row][game->column])
+			game->column++;
+		game->row++;
+	}
+	i = -1;
+	while (bermap[i])
+	{
+		j++;
+		while (bermap[i][++j])
+		{
+			if ((i == 0 || i == game->row -1) || \
+			(j == 0 || j == game->column - 1))
+				if (bermap[i][j] != '1')
+					perror_exit("Map is not enclosed by walls\n");
+		}
+	}
+	//must check elements in map
+	//must check amount of P E & C
+	//must check if the map is rectangular
+	//must check if exit is accessible
 }

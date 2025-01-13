@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:27:57 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/13 17:33:15 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:11:17 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,8 @@ typedef struct s_game
 void	perror_exit(char *str);
 void	verify_map_elements(t_game *game);
 void	read_map(char *argv, t_game *game);
+void	init_vars(t_game *game);
+void	check_valid_map(char **bermap, t_game *game);
+
 
 #endif
