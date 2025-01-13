@@ -6,16 +6,60 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 22:04:13 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/12 22:50:01 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:37:14 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	verify_map_elements(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (game->map[y])
+	{
+		x = 0;
+		while (game->map[y][x])
+		{
+			if (ft_strchr("01PCE", game->map[y][x]) ==NULL)
+			{
+				free(game);
+				printf("Error\nInvalid elements in map\n");
+				printf("Allowed elements: P, C, E, 1, 0.\n");
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
 void	read_map(char *argv, t_game *game)
 {
 	int		fd;
+	char	*tmp_catch_line;
+	char	*total_map;
 	char	*line;
-	char	*last_line;
-	
+
+	fd = open(argv, O_RDONLY);
+	total_map = ft_strdup("");
+	if (fd == -1)
+		perror_exit("Failed to open file or file is empty\n");
+	line = get_next_line(fd);
+	if (!line)
+		perror_exit("File is empty\n");
+	while (line)
+	{
+		tmp_catch_line = ft_strjoin(total_map, line);
+		free(total_map);
+		total_map = tmp_catch_line;
+		free(line);
+		line = get_next_line(fd);
+	}
+	free(line);
+	free(tmp_catch_line);
+	close(fd);
+	game->map = ft_split(total_map, '\n');
+	game->map_copy = ft_split(total_map, '\n');
 }
