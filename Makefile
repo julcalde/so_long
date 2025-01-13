@@ -4,11 +4,13 @@ CFLAGS =		-Wall -Werror -Wextra -I./libft
 
 HEADER	=		-I $(LIBMLX_DIR)/include -I $(LIBFT_DIR)/include
 
+LIBFT_DIR =		libft
+LIBFT =			$(LIBFT_DIR)/libft.a
+
 LIBMLX_DIR =	MLX42
 LIBMLX =		$(LIBMLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
-LIBFT_DIR =		libft
-LIBFT =			$(LIBFT_DIR)/libft.a
+INCLUDE =		-I$(LIBMLX_DIR)/include -I header -I libft
 
 SRCS =			main.c
 
