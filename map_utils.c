@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:10:34 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/17 14:02:49 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/17 19:18:04 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 	//must check amount of P E & C: DONE
 	//must check if the map is rectangular: DONE
 	//must check if exit is accessible: 
+	// ADD to map.c: 
 */
 void	check_elements(t_game *game)
 {
@@ -78,4 +79,52 @@ void	verify_map_rectangular(t_game *game)
 		i++;
 	}
 	game->row = tmp;
+}
+
+void	player_pos(t_game *game, int p_row, int p_col)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->map_copy[i])
+	{
+		j = 0;
+		while (game->map_copy[i][j])
+		{
+			if (game->map_copy[i][j] == 'P')
+			{
+				p_row = i;
+				p_col = j;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	verify_win_cond(t_game *game)
+{
+	int	p_row;
+	int	p_col;
+	int	scan_row;
+	int	scan_col;
+
+	p_row = 0;
+	p_col = 0;
+	scan_row = 0;
+	player_pos(game, &p_row, &p_col);
+	fill_map(game, p_row, p_col);
+	while (game->map_copy[scan_row])
+	{
+		scan_col = 0;
+		while (game->map_copy[scan_row][scan_col])
+		{
+			if (game->map_copy[scan_row][scan_col] == 'C' || \
+				game->map_copy[scan_row][scan_col] == 'E')
+				perror_exit("Win is not an option\n");
+			scan_col++;
+		}
+		scan_row++;
+	}
 }

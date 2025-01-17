@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 22:04:13 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/17 13:59:19 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/17 18:23:40 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void	check_valid_map(char **bermap, t_game *game)
 					perror_exit("Map is not enclosed by walls\n");
 		}
 	}
-	//must check elements in map
-	//must check amount of P E & C
-	//must check if the map is rectangular
-	//must check if exit is accessible
+	check_elements(game);
+	verify_ele_amount(game);
+	verify_map_rectangular(game);
+	verify_win_cond(game);
 }

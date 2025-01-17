@@ -6,13 +6,11 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:36:55 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/13 18:26:25 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/17 19:21:58 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	verify_args(int argc, char *argv);
 
 int	main(int argc, char **argv)
 {
@@ -25,18 +23,12 @@ int	main(int argc, char **argv)
 	read_map(argv[1], game);
 	verify_map_elements(game);
 	init_vars(game);
-	
+	check_valid_map(game->map, game);
+// Initialize game with game->mlx = mlx_init(*, *, *, *) and look for textures to implement
+// render the map
+// set key hooks
+// loop the game
+// set termination of mlx42
+// clean up and exit program
 	return (0);
-}
-
-void	verify_args(int argc, char *argv)
-{
-	if (argc != 2)
-	{
-		perror_exit("Use: ./so_long [map.ber]\n");
-	}
-	if (ft_strnstr(&argv[1], ".ber", ft_strlen(&argv[1])) == NULL)
-	{
-		perror_exit("Use: [file] with [.ber] extention\n");
-	}
 }
