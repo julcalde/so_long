@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:10:34 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/17 19:18:04 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/17 19:36:34 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	verify_map_rectangular(t_game *game)
 	game->row = tmp;
 }
 
-void	player_pos(t_game *game, int p_row, int p_col)
+void	player_pos(t_game *game, int *p_row, int *p_col)
 {
 	int	i;
 	int	j;
@@ -94,8 +94,8 @@ void	player_pos(t_game *game, int p_row, int p_col)
 		{
 			if (game->map_copy[i][j] == 'P')
 			{
-				p_row = i;
-				p_col = j;
+				*p_row = i;
+				*p_col = j;
 			}
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 22:04:13 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/17 18:23:40 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/17 19:37:18 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	verify_map_elements(t_game *game)
 			if (ft_strchr("01PCE", game->map[y][x]) == NULL)
 			{
 				free(game);
-				printf("Error\nInvalid elements in map\n");
-				printf("Allowed elements: P, C, E, 1, 0.\n");
+				perror_exit("Invalid elements in map\n");
+				ft_printf("Allowed elements: P, C, E, 1, 0.\n");
 			}
 			x++;
 		}
