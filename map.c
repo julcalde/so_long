@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 22:04:13 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/17 19:37:18 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/17 19:40:52 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	check_valid_map(char **bermap, t_game *game)
 	i = -1;
 	while (bermap[i])
 	{
-		j++;
+		j = -1;
 		while (bermap[i][++j])
 		{
 			if ((i == 0 || i == game->row -1) || \
