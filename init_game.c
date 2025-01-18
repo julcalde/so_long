@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:21:58 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/13 18:25:12 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/18 17:18:14 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,5 @@ void	init_vars(t_game *game)
 	game->locate_player_x = 0;
 	game->locate_player_y = 0;
 }
+
+
