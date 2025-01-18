@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:36:55 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/17 19:21:58 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/18 18:21:12 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	verify_map_elements(game);
 	init_vars(game);
 	check_valid_map(game->map, game);
-// Initialize game with game->mlx = mlx_init(*, *, *, *) and look for textures to implement
+	game->mlx = mlx_init(game->row * 32, game->column * 32, "2D shlong", 0);
 // render the map
 // set key hooks
 // loop the game

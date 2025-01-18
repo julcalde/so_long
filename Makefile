@@ -12,7 +12,7 @@ LIBMLX =		$(LIBMLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 INCLUDE =		-I$(LIBMLX_DIR)/include -I header -I libft
 
-SRCS =			main.c map.c map_utils.c init_game.c utils.c 
+SRCS =			main.c map.c map_utils.c init_game.c utils.c load_textures.c key_hook.c
 
 OBJS =			$(SRCS:.c=.o)
 
