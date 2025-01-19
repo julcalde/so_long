@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:10:34 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/19 21:07:01 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:28:33 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	verify_map_rectangular(t_game *game)
 		tmp = ft_strlen(game->map[i]);
 		if (line_len != tmp)
 		{
-			freemap(game);
+			free_map(game);
 			perror_exit("Map is not rectangular\n");
 		}
 		i++;
