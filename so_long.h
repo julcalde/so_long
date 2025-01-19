@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:27:57 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/17 19:36:21 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:32:21 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,10 @@ void	player_pos(t_game *game, int *p_row, int *p_col);
 void	verify_win_cond(t_game *game);
 void	ft_flood_fill(t_game *game, int path_x, int path_y);
 void	fill_map(t_game *game, int path_x, int path_y);
+void	load_textures(t_game *game);
+void	load_player(mlx_t *mlx, int row, int column, t_game *game);
+void	load_collectible(mlx_t *mlx, int row, int column, t_game *game);
+void	load_exit(mlx_t *mlx, int row, int column, t_game *game);
+void	load_map(mlx_t *mlx, t_game *game);
 
 #endif

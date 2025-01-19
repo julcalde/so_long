@@ -1,6 +1,6 @@
 NAME =			so_long
 
-CFLAGS =		-Wall -Werror -Wextra -I./libft
+CFLAGS =		-Wall -Werror -Wextra -I./libft -I./MLX42
 
 HEADER	=		-I $(LIBMLX_DIR)/include -I $(LIBFT_DIR)/include
 
@@ -27,7 +27,7 @@ $(LIBFT):
 $(LIBMLX):
 	make -C $(LIBMLX_DIR)
 
-%o: %c
+%.o: %.c
 	cc $(CFLAGS) -c $< -o $@
 
 clean:
