@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:36:55 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/19 20:48:13 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:14:56 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	load_map(game->mlx, game);
 	mlx_key_hook(game->mlx, (mlx_keyfunc)key_set, game);
 	mlx_loop(game->mlx);
-// set termination of mlx42
-// clean up and exit program
+	mlx_terminate(game->mlx);
+	freeda(game);
 	return (0);
 }
