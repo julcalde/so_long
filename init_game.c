@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:21:58 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/18 17:18:14 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:03:41 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,9 @@ void	init_vars(t_game *game)
 	game->locate_player_y = 0;
 }
 
+void	win_game(t_game *game)
+{
+	ft_printf("You finished the game!");
+	freeda(game);
+}
 

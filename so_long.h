@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:27:57 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/19 17:32:21 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:09:18 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,13 @@ void	load_player(mlx_t *mlx, int row, int column, t_game *game);
 void	load_collectible(mlx_t *mlx, int row, int column, t_game *game);
 void	load_exit(mlx_t *mlx, int row, int column, t_game *game);
 void	load_map(mlx_t *mlx, t_game *game);
+void	key_set(mlx_key_data_t paramkey, t_game *game);
+void	go_up(t_game *game);
+void	go_down(t_game *game);
+void	go_left(t_game *game);
+void	go_right(t_game *game);
+void	win_game(t_game *game);
+void	freeda(t_game *game);
+void	free_map(t_game *game);
 
 #endif

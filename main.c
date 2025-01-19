@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:36:55 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/19 17:44:43 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/19 20:48:13 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main(int argc, char **argv)
 	check_valid_map(game->map, game);
 	game->mlx = mlx_init(game->row * 32, game->column * 32, "Fish-cat", 0);
 	load_map(game->mlx, game);
-// set key hooks
-// loop the game
+	mlx_key_hook(game->mlx, (mlx_keyfunc)key_set, game);
+	mlx_loop(game->mlx);
 // set termination of mlx42
 // clean up and exit program
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:17:48 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/17 19:00:11 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:02:06 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,16 @@ void	ft_flood_fill(t_game *game, int path_x, int path_y)
 void	fill_map(t_game *game, int path_x, int path_y)
 {
 	ft_flood_fill(game, path_x, path_y);
+}
+
+void	freeda(t_game *game)
+{
+	mlx_delete_image(game->mlx, game->exit);
+	mlx_delete_image(game->mlx, game->wall);
+	mlx_delete_image(game->mlx, game->collectible);
+	mlx_delete_image(game->mlx, game->floor);
+	mlx_delete_image(game->mlx, game->player);
+	free(game->map);
+	mlx_close_window(game->mlx);
+	exit(0);
 }
