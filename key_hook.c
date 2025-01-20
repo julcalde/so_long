@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 18:07:42 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/20 21:27:49 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/20 21:31:20 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	go_up(t_game *game)
 			game->map[game->path_x - 1][game->path_y] = 'P';
 			load_map(game->mlx, game);
 			game->count_moves += 1;
-			ft_printf("%d\n", game->count_moves);
+			ft_printf("%d UP\n", game->count_moves);
 		}
 	}
 }
@@ -69,7 +69,7 @@ void	go_down(t_game *game)
 			game->map[game->path_x + 1][game->path_y] = 'P';
 			load_map(game->mlx, game);
 			game->count_moves += 1;
-			ft_printf("%d", game->count_moves);
+			ft_printf("%d DOWN\n", game->count_moves);
 		}
 	}
 }
@@ -93,7 +93,7 @@ void	go_left(t_game *game)
 			game->map[game->path_x][game->path_y - 1] = 'P';
 			load_map(game->mlx, game);
 			game->count_moves += 1;
-			ft_printf("%d", game->count_moves);
+			ft_printf("%d LEFT\n", game->count_moves);
 		}
 	}
 }
@@ -117,7 +117,7 @@ void	go_right(t_game *game)
 			game->map[game->path_x][game->path_y + 1] = 'P';
 			load_map(game->mlx, game);
 			game->count_moves += 1;
-			ft_printf("%d", game->count_moves);
+			ft_printf("%d RIGHT\n", game->count_moves);
 		}
 	}
 }
