@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 21:59:58 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/19 17:38:38 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:31:22 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	load_map(mlx_t *mlx, t_game *game)
 	int	i;
 	int	j;
 
+	load_textures(game);
 	i = -1;
 	while (game->map[++i])
 	{
@@ -63,15 +64,30 @@ void	load_map(mlx_t *mlx, t_game *game)
 		while (game->map[i][++j])
 		{
 			if (game->map[i][j] == '1')
+			{
+				// ft_printf("WALL I AM IN WALLS\n");
 				mlx_image_to_window(mlx, game->wall, j * 32, i * 32);
-			else if (game->map[i][i] == 'C')
+			}
+			else if (game->map[i][j] == 'C')
+			{
+				// ft_printf("before Collectible\n");
 				load_collectible(mlx, i, j, game);
-			else if (game->map[i][i] == 'P')
+			}
+			else if (game->map[i][j] == 'P')
+			{
+				// ft_printf("before player\n");
 				load_player(mlx, i, j, game);
-			else if (game->map[i][i] == 'E')
+			}
+			else if (game->map[i][j] == 'E')
+			{
+				// ft_printf("before Exit\n");
 				load_exit(mlx, i, j, game);
-			else if (game->map[i][i] == '0')
-				mlx_image_to_window(mlx, game->floor, i * 32, j * 32);
+			}
+			else if (game->map[i][j] == '0')
+			{
+				// ft_printf("before floor\n");
+				mlx_image_to_window(mlx, game->floor, j * 32, i * 32);
+			}
 		}
 	}
 }

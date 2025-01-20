@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:10:34 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/19 21:28:33 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:41:20 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	player_pos(t_game *game, int *p_row, int *p_col)
 			{
 				*p_row = i;
 				*p_col = j;
+				return ;
 			}
 			j++;
 		}

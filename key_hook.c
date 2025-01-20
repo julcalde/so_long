@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 18:07:42 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/19 21:02:53 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/20 21:27:49 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	key_set(mlx_key_data_t paramkey, t_game *game)
 {
-	if (paramkey.key == MLX_KEY_W && paramkey.action == MLX_RELEASE)
+	if (paramkey.key == MLX_KEY_W && paramkey.action == MLX_PRESS)
 		go_up(game);
-	if (paramkey.key == MLX_KEY_S && paramkey.action == MLX_RELEASE)
+	if (paramkey.key == MLX_KEY_S && paramkey.action == MLX_PRESS)
 		go_down(game);
-	if (paramkey.key == MLX_KEY_A && paramkey.action == MLX_RELEASE)
+	if (paramkey.key == MLX_KEY_A && paramkey.action == MLX_PRESS)
 		go_left(game);
-	if (paramkey.key == MLX_KEY_D && paramkey.action == MLX_RELEASE)
+	if (paramkey.key == MLX_KEY_D && paramkey.action == MLX_PRESS)
 		go_right(game);
-	if (paramkey.key == MLX_KEY_ESCAPE && paramkey.action == MLX_RELEASE)
+	if (paramkey.key == MLX_KEY_ESCAPE && paramkey.action == MLX_PRESS)
 		freeda(game);
 }
 
@@ -45,7 +45,7 @@ void	go_up(t_game *game)
 			game->map[game->path_x - 1][game->path_y] = 'P';
 			load_map(game->mlx, game);
 			game->count_moves += 1;
-			ft_printf("%d", game->count_moves);
+			ft_printf("%d\n", game->count_moves);
 		}
 	}
 }

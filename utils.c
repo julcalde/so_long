@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:17:48 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/19 21:02:06 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:57:33 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	perror_exit(char *str)
 {
 	ft_printf("Error\n");
-	ft_printf("%S", str);
+	ft_printf("%s", str);
 	exit(EXIT_FAILURE);
 }
 
@@ -33,23 +33,9 @@ void	verify_args(int argc, char *argv)
 
 void	ft_flood_fill(t_game *game, int path_x, int path_y)
 {
-	if (path_x < 0 || path_y < 0 || path_x >= game->column || \
-		path_y >= game->row || game->map_copy[path_x][path_y] == '1' || \
+	if (game->map_copy[path_x][path_y] == '1' || \
 		game->map_copy[path_x][path_y] == 'V')
 		return ;
-	if (((game->map_copy[path_x + 1][path_y] == 'E') || \
-		(game->map_copy[path_x - 1][path_y] == 'E')) && \
-		((game->map_copy[path_x][path_y + 1] == '1') || \
-		(game->map_copy[path_x][path_y + 1] == '1')))
-		return ;
-	if (((game->map_copy[path_x][path_y + 1] == 'E') || \
-		(game->map_copy[path_x][path_y - 1] == 'E')) && \
-		((game->map_copy[path_x + 1][path_y] == '1') || \
-		(game->map_copy[path_x - 1][path_y] == '1')))
-		return ;
-	if (game->map_copy[path_x][path_y] == 'E' || \
-		game->map_copy[path_x][path_y] == 'C')
-		game->map_copy[path_x][path_y] = '0';
 	game->map_copy[path_x][path_y] = 'V';
 	ft_flood_fill(game, path_x + 1, path_y);
 	ft_flood_fill(game, path_x - 1, path_y);
