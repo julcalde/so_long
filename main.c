@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:36:55 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/20 19:36:22 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/20 22:06:24 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	check_valid_map(game->map, game);
 	ft_printf("4: game row %d\n", game->row);
 	ft_printf("game column %d\n", game->column);
-	game->mlx = mlx_init(game->row * 32, game->column * 32, "Fish-cat", 0);
+	game->mlx = mlx_init(game->row * 32, game->column * 32, "Cat Fishing", 1);
 	ft_printf("1 We are before loading map\n");
 	load_map(game->mlx, game);
 	ft_printf("2 Now the key hook\n");
@@ -37,5 +37,6 @@ int	main(int argc, char **argv)
 	mlx_terminate(game->mlx);
 	ft_printf("5 safe exit\n");
 	freeda(game);
+	ft_printf("6 game freed\n");
 	return (0);
 }

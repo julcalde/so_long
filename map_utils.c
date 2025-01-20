@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:10:34 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/20 18:41:20 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/20 22:26:40 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,21 @@ void	check_elements(t_game *game)
 	int	x;
 	int	y;
 
-	y = 0;
-	while (game->map[y])
+	x = 0;
+	while (game->map[x])
 	{
-		x = 0;
-		while (game->map[y][x])
+		y = 0;
+		while (game->map[x][y])
 		{
-			if (game->map[y][x] == 'P')
+			if (game->map[x][y] == 'P')
 				game->count_player++;
-			if (game->map[y][x] == 'C')
+			if (game->map[x][y] == 'C')
 				game->count_collect++;
-			if (game->map[y][x] == 'E')
+			if (game->map[x][y] == 'E')
 				game->count_exit++;
-			x++;
+			y++;
 		}
-		y++;
+		x++;
 	}
 }
 
@@ -119,11 +119,13 @@ void	verify_win_cond(t_game *game)
 	while (game->map_copy[scan_row])
 	{
 		scan_col = 0;
+		ft_printf("scan row %d\n", scan_row);
 		while (game->map_copy[scan_row][scan_col])
 		{
 			if (game->map_copy[scan_row][scan_col] == 'C' || \
 				game->map_copy[scan_row][scan_col] == 'E')
 				perror_exit("Win is not an option\n");
+			ft_printf("scan col %d\n", scan_col);
 			scan_col++;
 		}
 		scan_row++;
