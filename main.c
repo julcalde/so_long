@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:36:55 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/21 17:48:26 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/21 19:55:38 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	verify_map_elements(game);
 	init_vars(game);
 	check_valid_map(game->map, game);
-	game->mlx = mlx_init(game->column * 32, game->row * 32, "Cat Fishing", 1);
+	game->mlx = mlx_init(game->column * 32, game->row * 32, "Fish-Catting", 1);
 	load_map(game->mlx, game);
 	mlx_key_hook(game->mlx, (mlx_keyfunc)key_set, game);
 	mlx_loop(game->mlx);

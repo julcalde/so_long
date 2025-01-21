@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:27:57 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/21 17:54:46 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/21 19:52:31 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	go_right(t_game *game);
 // init_game.c
 void	init_vars(t_game *game);
 void	win_game(t_game *game);
-void	load_floors_and_walls(mlx_t *mlx, t_game *game);
+void	load_floors_and_walls_and_exit(mlx_t *mlx, t_game *game);
+void	refresh_floor(mlx_t *mlx, t_game *game);
 
 #endif

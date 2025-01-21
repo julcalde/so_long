@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:21:58 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/21 17:54:37 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/21 19:59:48 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	init_vars(t_game *game)
 
 void	win_game(t_game *game)
 {
-	ft_printf("You finished the game!");
+	ft_printf("Your cat ate all the fish!");
 	freeda(game);
 }
 
-void	load_floors_and_walls(mlx_t *mlx, t_game *game)
+void	load_floors_and_walls_and_exit(mlx_t *mlx, t_game *game)
 {
 	int	i;
 	int	j;
@@ -47,6 +47,13 @@ void	load_floors_and_walls(mlx_t *mlx, t_game *game)
 			mlx_image_to_window(mlx, game->floor, j * 32, i * 32);
 			if (game->map[i][j] == '1')
 				mlx_image_to_window(mlx, game->wall, j * 32, i * 32);
+			if (game->map[i][j] == 'E')
+				mlx_image_to_window(mlx, game->exit, j * 32, i * 32);
 		}
 	}
+}
+
+void	refresh_floor(mlx_t *mlx, t_game *game)
+{
+	mlx_image_to_window(mlx, game->floor, game->path_y * 32, game->path_x * 32);
 }

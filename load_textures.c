@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 21:59:58 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/21 18:01:52 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/21 19:51:00 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	load_textures(t_game *game)
 	mlx_delete_texture(game->tmp);
 	game->tmp = mlx_load_png("textures/player.png");
 	if (!game->tmp)
-		perror_exit("Failed to load plauyer texture");
+		perror_exit("Failed to load player texture");
 	game->player = mlx_texture_to_image(game->mlx, game->tmp);
 	mlx_delete_texture(game->tmp);
 	game->tmp = mlx_load_png("textures/collectible.png");
@@ -67,7 +67,7 @@ void	load_map(mlx_t *mlx, t_game *game)
 	int	j;
 
 	load_textures(game);
-	load_floors_and_walls(mlx, game);
+	load_floors_and_walls_and_exit(mlx, game);
 	i = -1;
 	while (game->map[++i])
 	{
@@ -78,8 +78,6 @@ void	load_map(mlx_t *mlx, t_game *game)
 				load_collectible(mlx, i, j, game);
 			else if (game->map[i][j] == 'P')
 				load_player(mlx, i, j, game);
-			else if (game->map[i][j] == 'E')
-				load_exit(mlx, i, j, game);
 		}
 	}
 }
