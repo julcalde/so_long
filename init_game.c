@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:21:58 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/19 21:03:41 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:54:37 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,20 @@ void	win_game(t_game *game)
 	freeda(game);
 }
 
+void	load_floors_and_walls(mlx_t *mlx, t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (game->map[++i])
+	{
+		j = -1;
+		while (game->map[i][++j])
+		{
+			mlx_image_to_window(mlx, game->floor, j * 32, i * 32);
+			if (game->map[i][j] == '1')
+				mlx_image_to_window(mlx, game->wall, j * 32, i * 32);
+		}
+	}
+}
