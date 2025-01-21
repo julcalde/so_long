@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 22:04:13 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/21 14:37:33 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:23:19 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,33 +73,23 @@ void	check_valid_map(char **bermap, t_game *game)
 	{
 		game->column = 0;
 		while (bermap[game->row][game->column])
-		{
 			game->column++;
-		}
 		game->row++;
 	}
-	ft_printf("Outside incrementation loop NOW\n");
 	i = -1;
 	while (bermap[++i])
 	{
 		j = -1;
 		while (bermap[i][++j])
 		{
-			if ((i == 0 || i == game->row - 1) || \
-			(j == 0 || j == game->column - 1))
+			if (i == 0 || i == game->row - 1 || j == 0 || j == game->column - 1)
 				if (bermap[i][j] != '1')
-					perror_exit("Map is not enclosed by walls\n");
+					perror_exit("Map is not surrounded by walls\n");
 		}
 	}
-	ft_printf("check ele\n");
 	check_elements(game);
-	ft_printf("check ele amo\n");
 	verify_ele_amount(game);
-	ft_printf("ver map rect\n");
 	verify_map_rectangular(game);
-	ft_printf("game row %d: \n", game->row);
-	ft_printf("game column %d: \n", game->column);
-	ft_printf("ver win con\n");
 	verify_win_cond(game);
 }
 

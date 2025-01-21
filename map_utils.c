@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:10:34 by julcalde          #+#    #+#             */
-/*   Updated: 2025/01/21 14:44:29 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:21:34 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,20 @@ void	verify_map_rectangular(t_game *game)
 
 	game->row = 0;
 	i = 0;
-	tmp = 0;
-	line_len = ft_strlen(game->map[0]);
+	tmp = ft_strlen(game->map[0]);
+	line_len = tmp;
 	while (game->map[i])
 	{
 		tmp = ft_strlen(game->map[i]);
 		if (line_len != tmp)
 		{
-			free_map(game);
+			if (game)
+				free_map(game);
 			perror_exit("Map is not rectangular\n");
 		}
 		i++;
 	}
-	game->row = tmp;
+	game->row = i;
 }
 
 void	player_pos(t_game *game, int *p_row, int *p_col)
@@ -119,13 +120,11 @@ void	verify_win_cond(t_game *game)
 	while (game->map_copy[scan_row])
 	{
 		scan_col = 0;
-		ft_printf("scan row %d\n", scan_row);
 		while (game->map_copy[scan_row][scan_col])
 		{
 			if (game->map_copy[scan_row][scan_col] == 'C' || \
 				game->map_copy[scan_row][scan_col] == 'E')
-				perror_exit("Win is not an option\n");
-			ft_printf("scan col %d\n", scan_col);
+				perror_exit("Either C or E not accessible\n");
 			scan_col++;
 		}
 		scan_row++;
